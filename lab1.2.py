@@ -1,8 +1,13 @@
+# Посчитать, сколько пар (стоят рядом) верхнего и нижнего
+# регистра находится в веденном с клавиатуры слове. (Пример HjkLM- 1
+# пара нижнего, 1 пара верхнего), а также сколько гласных букв в слове.
+
 word = input("Введите слово: ")
 upper_pairs = 0
 lower_pairs = 0
 vowels = 0
 i = 0
+
 while i < len(word):
     if word[i].islower() and word[i + 1].islower():
         lower_pairs += 1
@@ -11,7 +16,6 @@ while i < len(word):
         upper_pairs += 1
         i += 1
     i += 1
-
 
 for i in range(len(word) - 1):
     if word[i].lower() in "aeiuoуеыаоэяию":
