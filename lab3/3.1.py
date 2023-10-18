@@ -4,38 +4,29 @@
 # все строки, в которых нет слов, совпадающих с первым словом. Определить
 # количество согласных букв в первой строке файла F2.
 
-# Открываем файл F1 для записи
 with open('F1.txt', 'w') as f1:
     print("Введите данные для записи в файл F1 (для окончания ввода введите пустую строку):")
 
-    # Ввод данных, пока не будет введена пустая строка
     while True:
         line = input()
         if not line:
             break
         f1.write(line + '\n')
 
-# Открываем файл F1 для чтения и файл F2 для записи
 with open('F1.txt', 'r') as f1, open('F2.txt', 'w') as f2:
-    # Читаем первую строку из файла F1
     first_line = f1.readline()
 
-    # Разбиваем первую строку на слова
     first_words = first_line.split()
+    consonants_count = 0
+    for char in first_line:
+        if char.isalpha() and char.lower() not in 'aeiouуеыаоэяию':
+            consonants_count += 1
 
-    # Считаем количество согласных букв в первой строке файла F2
-    consonants_count = sum(1 for char in first_line if char.isalpha() and char.lower() not in 'aeiouуеыаоэяию')
-
-    # Если первая строка пустая, записываем её в файл F2
     if not first_line.strip():
         f2.write(first_line)
 
-    # Читаем остальные строки из файла F1
     for line in f1:
-        # Проверяем, есть ли в строке слова, совпадающие с первым словом
         if not any(word in line.split() for word in first_words):
-            # Если нет, записываем строку в файл F2
             f2.write(line)
 
-# Выводим количество согласных букв в первой строке файла F2
 print(f"Количество согласных букв в первой строке файла F2: {consonants_count}")

@@ -22,7 +22,7 @@ with open('lessons.txt', 'r', encoding='utf-8') as file:
             total_lessons = 0
             for lesson_part in lesson_parts:
                 if lesson_part.endswith('(л)') or lesson_part.endswith('(пр)') or lesson_part.endswith('(лаб)'):
-                    lesson_count = int(lesson_part.split('(')[0])  # Разделяем число и скобку и берем число
+                    lesson_count = int(lesson_part.split('(')[0])
                     total_lessons += lesson_count
 
             lessons_dict[subject] = total_lessons
